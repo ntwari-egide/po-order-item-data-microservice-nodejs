@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service ItemService {
+    rpc GetAll (Empty) returns (ItemList) {}
+}
+
+message Empty {}
+
+message Item {
+    string id = 1;
+    string itemName = 2;
+}
+
+message ItemList {
+    repeated Item items = 1;
+}
