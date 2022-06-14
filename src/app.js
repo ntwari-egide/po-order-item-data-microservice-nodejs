@@ -1,4 +1,5 @@
 require("../trace/trace");
+require('./database/database')
 const PROTO_PATH = "./grpc/items.proto";
 
 var grpc = require("grpc");
