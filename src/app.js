@@ -12,9 +12,12 @@ var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   arrays: true,
 });
 
+
+
 var proto = grpc.loadPackageDefinition(packageDefinition);
 
 const { v4: uuidv4 } = require("uuid");
+const { connection } = require("./database/database");
 
 const server = new grpc.Server();
 const items = [
@@ -30,6 +33,11 @@ const items = [
 
 server.addService(proto.ItemService.service, {
   getAll: (_, callback) => {
+
+    // getting all items from db
+
+    
+
     callback(null, { items });
   },
 
@@ -69,6 +77,7 @@ server.addService(proto.ItemService.service, {
       });
     }
   },
+  
 
   remove: (call, callback) => {
     let existingCustomerIndex = customers.findIndex((n) => n.id == call.request.id);
