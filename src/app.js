@@ -16,20 +16,9 @@ var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 
 var proto = grpc.loadPackageDefinition(packageDefinition);
 
-const { v4: uuidv4 } = require("uuid");
-const { connection, getAllCustomers, deleteCustomer, insertCustomer, getCustomer } = require("./database/database");
+const {  getAllCustomers, deleteCustomer, insertCustomer, getCustomer } = require("./database/database");
 
 const server = new grpc.Server();
-const items = [
-  {
-    id: "a68b823c-fb4d5312cafc",
-    itemName: "item A",
-  },
-  {
-    id: "34415c7c--ae2a1aaa92b7",
-    itemName: "item B",
-  },
-];
 
 server.addService(proto.ItemService.service, {
   getAll: (_, callback) => {
