@@ -36,9 +36,6 @@ server.addService(proto.ItemService.service, {
 
     // getting all items from db
 
-    
-
-    callback(null, { items });
   },
 
   get: (call, callback) => {
