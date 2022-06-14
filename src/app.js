@@ -17,7 +17,7 @@ var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 var proto = grpc.loadPackageDefinition(packageDefinition);
 
 const { v4: uuidv4 } = require("uuid");
-const { connection, getAllCustomers } = require("./database/database");
+const { connection, getAllCustomers, deleteCustomer, insertCustomer, getCustomer } = require("./database/database");
 
 const server = new grpc.Server();
 const items = [
@@ -41,14 +41,7 @@ server.addService(proto.ItemService.service, {
   },
 
   get: (call, callback) => {
-    // let customer = customers.find((n) => n.id == call.request.id);
-    let customer = null;
-
-    const query = "select * from tb_cust where id="+call.request.id
-
-    connection.query(query, (req,rows, fields) => {
-      return customer = rows
-    })
+    let customer = getCustomer(call)
 
     if (customer) {
       callback(null, customer);
@@ -64,8 +57,8 @@ server.addService(proto.ItemService.service, {
 
     let customer = call.request;
 
-    // customer.id = uuidv4();
-    // customers.push(customer);
+    insertCustomer(customer)
+    
     callback(null, customer);
   },
 
@@ -87,16 +80,9 @@ server.addService(proto.ItemService.service, {
   
 
   remove: (call, callback) => {
-    let existingCustomerIndex = customers.findIndex((n) => n.id == call.request.id);
+    let response = deleteCustomer(call)
 
-    const query = "delete from tb_cust where id =" + call.request.id;
-
-    connection.query(query, (req,rows, fields) => {
-      existingCustomerIndex = rows
-    })
-
-    if (existingCustomerIndex != -1) {
-      customers.splice(existingCustomerIndex, 1);
+    if (response > 0) {
       callback(null, {});
     } else {
       callback({

@@ -161,12 +161,32 @@ exports.insertCustomer = (request) => {
     return response 
 }
 
-exports.updateCustomer = () => {
+exports.getCustomer = (call) => {
+    let customer = null;
+
+    const query = "select * from tb_cust where id="+call.request.id
+
+    connection.query(query, (req,rows, fields) => {
+      customer = rows
+    })
+
+    return customer;
+}
+
+exports.updateCustomer = (call) => {
 
 }
 
-exports.deleteCustomer = () => {
-    
+exports.deleteCustomer = (call) => {
+    const query = "delete from tb_cust where id =" + call.request.id;
+
+    let response;
+
+    connection.query(query, (req,rows, fields) => {
+      response = rows
+    })
+
+    return response;
 }
 
 exports.connection
