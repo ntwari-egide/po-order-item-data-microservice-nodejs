@@ -12,10 +12,15 @@ connection.connect( (error) => {
     else console.log("Connection failed: ", JSON.stringify(error,undefined, 2));
 }) 
 
-exports.getAllCustomers = () => {
-    connection.query("select * from tb_cust", (req,rows, fields) => {
-        console.log("customers: ", rows);
+exports.getAllItems = () => {
+
+    return new Promise((ok,fail) => {
+        connection.query("select * from tb_ItemTag", (err,rows, fields) => {
+            if(err) fail()
+            ok(rows)
+        })
     })
+
 }
 
 exports.insertCustomer = (request) => {

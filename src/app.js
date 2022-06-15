@@ -16,15 +16,24 @@ var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 
 var proto = grpc.loadPackageDefinition(packageDefinition);
 
-const {  getAllCustomers, deleteCustomer, insertCustomer, getCustomer } = require("./database/database");
+const {  getAllItems, deleteCustomer, insertCustomer, getCustomer } = require("./database/database");
 
 const server = new grpc.Server();
 
 server.addService(proto.ItemService.service, {
-  getAll: (_, callback) => {
+  getAll: async (_, callback) => {
+
+    const items = []
 
     // getting all items from db
-    const items = getAllCustomers()
+    let itemsFound = await getAllItems()
+
+    itemsFound.forEach(element => {
+      items.push({
+        id: element.id,
+        itemName: element.tag_name
+      })
+    });
 
     callback(null, { items });
   },
