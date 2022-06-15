@@ -34,7 +34,6 @@ server.addService(proto.ItemService.service, {
         itemName: element.tag_name
       })
     });
-
     callback(null, { items });
   },
 
