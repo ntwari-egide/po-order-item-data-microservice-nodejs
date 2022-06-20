@@ -23,138 +23,8 @@ exports.getAllItems = () => {
 
 }
 
-exports.insertCustomer = (request) => {
-    const query = `
-    INSERT INTO
-        tb_cust(
-            guid_key,
-            SubCod,
-            EngName,
-            ChiName,
-            Dept,
-            erp_name,
-            rights_group,
-            admin,
-            passwd,
-            passwd2,
-            leadSource,
-            Tel,
-            Contact,
-            Fax,
-            Mobile,
-            Gemail,
-            Factory_Code,
-            URL,
-            Office_EngAddr,
-            Office_ChiAddr,
-            Rmk,
-            PTerm,
-            Discount_Rate,
-            CLimit,
-            Business_Registration_No,
-            employee,
-            Delivery_CpyName,
-            Delivery_Phone,
-            Delivery_Fax,
-            Delivery_Email,
-            Delivery_Contact,
-            Delivery_Address,
-            lastAdminLogon,
-            Created_date,
-            Created_by,
-            last_updated_by,
-            last_updated_date,
-            brand_orderfrom,
-            Country,
-            City,
-            Post_code,
-            State,
-            ERP_Customer_No,
-            lineofbusiness,
-            currency,
-            segmentid,
-            freedelivery,
-            paymentterm,
-            deliveryterm,
-            paymenttermdescription,
-            CreateType,
-            DarftEmail,
-            AutoArtworkPDFModel,
-            OwnerAuthority,
-            IsModify,
-            DownProFileStatus,
-            MyOrder,
-            enablePrint,
-            AutoArtworkPDFModelForCS,
-            ClientCode,
-            DynCustomerID
-        )
-    VALUES
-        (
-            "83568683-2d56-4cef-860d-da02c7b639ee",
-            "S00001",
-            "Jean",
-            "Paul",
-            "Dept1",
-            "err_name",
-            "R",
-            "jean",
-            "jean@123",
-            "jean@123",
-            "leadsource",
-            "7342-453-535",
-            "842-535-245",
-            "-",
-            "mobile",
-            "gmail",
-            "F0001",
-            "https://example.com",
-            "--------------",
-            "--------------",
-            "rmk",
-            "pterm",
-            25,
-            10,
-            "09876543234",
-            8398,
-            "XXXXXXXX",
-            "delivphone",
-            "delivfax",
-            "deli@gmail.com",
-            "delivery-contact",
-            "--------------",
-            "2021-02-12",
-            "2021-02-08",
-            "XX YY",
-            "XX YY",
-            "2021-01-18",
-            123,
-            "IA200001 CH-GD",
-            "IA200001SZ",
-            "IA200001 CH-199",
-            3883,
-            "ERP_Customer_No",
-            "lineofbusiness",
-            "$$$",
-            "933-43253-5354",
-            "free delivery",
-            "payment term",
-            "delivery term",
-            "paymenttermdescription",
-            "CreateType",
-            "draft mail",
-            "AutoArtworkPDFModel",
-            "Y",
-            B'11111110',
-            "N",
-            "4",
-            "T",
-            "AutoArtworkPDFModelForCS",
-            "client code",
-            "DynCustomerID"
-        );
-    
-    `;
+exports.insertItem = (request) => {
+    const query = "INSERT INTO `tb_ItemTag` VALUES (1,'tag_name','brand_id','F1_ID',424,'F2_ID',5355,'F3_ID',4353,'F4_ID',234,'F5_ID',1353,'F6_ID',6477,'F7_ID',3456,'F8_ID',2345,'F9_ID',4985,'F10_ID',2985,'F11_ID',9883,'F12_ID',8742,'F13_ID',3563,'F14_ID',6323,'F15_ID',7542,'F16_ID',6434,'F17_ID',8765,'F18_ID',7645,'F19_ID',5345,'F20_ID',7543,'F21_ID',7588,'F22_ID',6423,'F23_ID',6434,'F24_ID',6446,'F25_ID',7554,'F26_ID',9778,'F27_ID',8654,'F28_ID',8654,'F29_ID',6456,'F30_ID',6545,5345,3324,8689,'AIcon1_ID',7323,'AIcon2_ID',4578,'AIcon3_ID',8699,'AIcon4_ID',7532,'AIcon5_ID',54575,'AIcon6_ID',6443,'AIcon7_ID',6434,'AIcon8_ID',8987,'AIcon9_ID',3324,'AIcon10_ID',9955,'BIcon1_ID',7442,'BIcon2_ID',3467,'BIcon3_ID',6444),(2,'tag_name','brand_id','F1_ID',424,'F2_ID',5355,'F3_ID',4353,'F4_ID',234,'F5_ID',1353,'F6_ID',6477,'F7_ID',3456,'F8_ID',2345,'F9_ID',4985,'F10_ID',2985,'F11_ID',9883,'F12_ID',8742,'F13_ID',3563,'F14_ID',6323,'F15_ID',7542,'F16_ID',6434,'F17_ID',8765,'F18_ID',7645,'F19_ID',5345,'F20_ID',7543,'F21_ID',7588,'F22_ID',6423,'F23_ID',6434,'F24_ID',6446,'F25_ID',7554,'F26_ID',9778,'F27_ID',8654,'F28_ID',8654,'F29_ID',6456,'F30_ID',6545,5345,3324,8689,'AIcon1_ID',7323,'AIcon2_ID',4578,'AIcon3_ID',8699,'AIcon4_ID',7532,'AIcon5_ID',54575,'AIcon6_ID',6443,'AIcon7_ID',6434,'AIcon8_ID',8987,'AIcon9_ID',3324,'AIcon10_ID',9955,'BIcon1_ID',7442,'BIcon2_ID',3467,'BIcon3_ID',6444),(3,'tag_name','brand_id','F1_ID',424,'F2_ID',5355,'F3_ID',4353,'F4_ID',234,'F5_ID',1353,'F6_ID',6477,'F7_ID',3456,'F8_ID',2345,'F9_ID',4985,'F10_ID',2985,'F11_ID',9883,'F12_ID',8742,'F13_ID',3563,'F14_ID',6323,'F15_ID',7542,'F16_ID',6434,'F17_ID',8765,'F18_ID',7645,'F19_ID',5345,'F20_ID',7543,'F21_ID',7588,'F22_ID',6423,'F23_ID',6434,'F24_ID',6446,'F25_ID',7554,'F26_ID',9778,'F27_ID',8654,'F28_ID',8654,'F29_ID',6456,'F30_ID',6545,5345,3324,8689,'AIcon1_ID',7323,'AIcon2_ID',4578,'AIcon3_ID',8699,'AIcon4_ID',7532,'AIcon5_ID',54575,'AIcon6_ID',6443,'AIcon7_ID',6434,'AIcon8_ID',8987,'AIcon9_ID',3324,'AIcon10_ID',9955,'BIcon1_ID',7442,'BIcon2_ID',3467,'BIcon3_ID',6444),(4,'tag_name','brand_id','F1_ID',424,'F2_ID',5355,'F3_ID',4353,'F4_ID',234,'F5_ID',1353,'F6_ID',6477,'F7_ID',3456,'F8_ID',2345,'F9_ID',4985,'F10_ID',2985,'F11_ID',9883,'F12_ID',8742,'F13_ID',3563,'F14_ID',6323,'F15_ID',7542,'F16_ID',6434,'F17_ID',8765,'F18_ID',7645,'F19_ID',5345,'F20_ID',7543,'F21_ID',7588,'F22_ID',6423,'F23_ID',6434,'F24_ID',6446,'F25_ID',7554,'F26_ID',9778,'F27_ID',8654,'F28_ID',8654,'F29_ID',6456,'F30_ID',6545,5345,3324,8689,'AIcon1_ID',7323,'AIcon2_ID',4578,'AIcon3_ID',8699,'AIcon4_ID',7532,'AIcon5_ID',54575,'AIcon6_ID',6443,'AIcon7_ID',6434,'AIcon8_ID',8987,'AIcon9_ID',3324,'AIcon10_ID',9955,'BIcon1_ID',7442,'BIcon2_ID',3467,'BIcon3_ID',6444),(5,'tag_name','brand_id','F1_ID',424,'F2_ID',5355,'F3_ID',4353,'F4_ID',234,'F5_ID',1353,'F6_ID',6477,'F7_ID',3456,'F8_ID',2345,'F9_ID',4985,'F10_ID',2985,'F11_ID',9883,'F12_ID',8742,'F13_ID',3563,'F14_ID',6323,'F15_ID',7542,'F16_ID',6434,'F17_ID',8765,'F18_ID',7645,'F19_ID',5345,'F20_ID',7543,'F21_ID',7588,'F22_ID',6423,'F23_ID',6434,'F24_ID',6446,'F25_ID',7554,'F26_ID',9778,'F27_ID',8654,'F28_ID',8654,'F29_ID',6456,'F30_ID',6545,5345,3324,8689,'AIcon1_ID',7323,'AIcon2_ID',4578,'AIcon3_ID',8699,'AIcon4_ID',7532,'AIcon5_ID',54575,'AIcon6_ID',6443,'AIcon7_ID',6434,'AIcon8_ID',8987,'AIcon9_ID',3324,'AIcon10_ID',9955,'BIcon1_ID',7442,'BIcon2_ID',3467,'BIcon3_ID',6444);";
 
     let response;
 
@@ -166,24 +36,24 @@ exports.insertCustomer = (request) => {
     return response 
 }
 
-exports.getCustomer = (call) => {
-    let customer = null;
+exports.getItem = (call) => {
+    let itemFound = null;
 
-    const query = "select * from tb_cust where id="+call.request.id
+    const query = "select * from tb_ItemTag where id="+call.request.id
 
     connection.query(query, (req,rows, fields) => {
-      customer = rows
+        itemFound = rows
     })
 
-    return customer;
+    return itemFound;
 }
 
-exports.updateCustomer = (call) => {
+exports.updateItem = (call) => {
 
 }
 
-exports.deleteCustomer = (call) => {
-    const query = "delete from tb_cust where id =" + call.request.id;
+exports.deleteItem = (call) => {
+    const query = "delete from tb_ItemTag where id =" + call.request.id;
 
     let response;
 

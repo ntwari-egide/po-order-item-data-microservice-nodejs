@@ -16,7 +16,7 @@ var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 
 var proto = grpc.loadPackageDefinition(packageDefinition);
 
-const {  getAllItems, deleteCustomer, insertCustomer, getCustomer } = require("./database/database");
+const {  getAllItems, getItem, insertItem, updateItem, deleteItem } = require("./database/database");
 
 const server = new grpc.Server();
 
@@ -38,10 +38,10 @@ server.addService(proto.ItemService.service, {
   },
 
   get: (call, callback) => {
-    let customer = getCustomer(call)
+    let itemFound = getItem(call)
 
-    if (customer) {
-      callback(null, customer);
+    if (itemFound) {
+      callback(null, itemFound);
     } else {
       callback({
         code: grpc.status.NOT_FOUND,
@@ -52,15 +52,15 @@ server.addService(proto.ItemService.service, {
 
   insert: (call, callback) => {
 
-    let customer = call.request;
+    let itemRequest = call.request;
 
-    insertCustomer(customer)
+    insertItem(itemRequest)
     
     callback(null, customer);
   },
 
   update: (call, callback) => {
-    let existingCustomer = customers.find((n) => n.id == call.request.id);
+    let existingCustomer = updateItem(call)
 
     if (existingCustomer) {
       existingCustomer.name = call.request.name;
@@ -77,7 +77,7 @@ server.addService(proto.ItemService.service, {
   
 
   remove: (call, callback) => {
-    let response = deleteCustomer(call)
+    let response = deleteItem(call)
 
     if (response > 0) {
       callback(null, {});
