@@ -49,7 +49,14 @@ exports.getItem = (call) => {
 }
 
 exports.updateItem = (call) => {
+    const query = `UPDATE TABLE tb_ItemTag SET tag_name = ${call.request.itemTagName} WHERE id=${call.request.id}`
 
+    let response;
+
+    connection.query(query, (req,rows,fields) => {
+        console.log("Rows: ", rows)
+        response = rows;
+    })
 }
 
 exports.deleteItem = (call) => {
